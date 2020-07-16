@@ -42,16 +42,24 @@ then
   echo "--[ Updating PiHole ]--"
   echo "-----------------------"
   sudo pihole -up
+  echo "--------------------------------------"
+  echo "--[ Run PiHole Gravity Sync? (y/n) ]--"
+  echo "--------------------------------------"
+  read -p ""
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    /bin/bash /home/nn/gravity-sync/gravity-sync.sh smart
+  fi
   echo "----------------------------------------"
   echo "--[ Update PiHole - Speedtest? (y/n) ]--"
   echo "----------------------------------------"
   read -p ""
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
-  echo "-----------------------------------"
-  echo "--[ Updating PiHole - Speedtest ]--"
-  echo "-----------------------------------"
-  sudo curl -sSL https://github.com/arevindh/pihole-speedtest/raw/master/update.sh | bash
+    echo "-----------------------------------"
+    echo "--[ Updating PiHole - Speedtest ]--"
+    echo "-----------------------------------"
+    sudo curl -sSL https://github.com/arevindh/pihole-speedtest/raw/master/update.sh | bash
   fi
 fi
 echo "------------------------"
