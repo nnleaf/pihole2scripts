@@ -49,6 +49,16 @@ then
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     /bin/bash /home/nn/gravity-sync/gravity-sync.sh smart
+    /bin/bash /home/nn/gravity-sync/gravity-sync.sh version
+  fi
+  echo "----------------------------------"
+  echo "--[ Update Gravity Sync? (y/n) ]--"
+  echo "----------------------------------"
+  read -p ""
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    /bin/bash /home/nn/gravity-sync/gravity-sync.sh update
+    /bin/bash /home/nn/gravity-sync/gravity-sync.sh version
   fi
 fi
 echo "------------------------"
@@ -90,9 +100,9 @@ then
   read -p ""
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
-  echo "-----------------------------"
-  echo "--[ Running rkhunter scan ]--"
-  echo "-----------------------------"
-  sudo rkhunter --check --rwo
+    echo "-----------------------------"
+    echo "--[ Running rkhunter scan ]--"
+    echo "-----------------------------"
+    sudo rkhunter --check --rwo
   fi
 fi
